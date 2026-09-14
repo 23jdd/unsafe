@@ -50,7 +50,7 @@ cargo check
 cargo run
 ```
 
-不过要注意，当前 `main.rs` 是一个“故意写错”的借用示例：
+不过要注意，当前 `lib` 是一个“故意写错”的借用示例：
 
 ```rust
 let refcell = Refcell::new(User::new());
@@ -104,7 +104,7 @@ shared_ref.check();
 1. 先看 `my_box.rs`，从一个值的内存申请和释放开始。
 2. 再看 `vector.rs`，了解连续内存、自动扩容和迭代器。
 3. 接着看 `rc.rs` 和 `arc.rs`，对比普通引用计数和原子引用计数。
-4. 最后看 `cell.rs`、`refcell.rs` 和 `main.rs`，理解内部可变性与运行时借用检查。
+4. 最后看 `cell.rs`、`refcell.rs` 和 `lib`，理解内部可变性与运行时借用检查。
 
 
 

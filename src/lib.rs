@@ -6,3 +6,4 @@ pub mod refcell;
 pub mod rc;
 pub mod string;
 pub mod vector;
+pub mod linked_list;
