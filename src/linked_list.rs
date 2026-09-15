@@ -182,7 +182,7 @@ impl<T> LinkedList<T> where T:Default{
     }
 
     pub fn clear(&mut self){
-        while let Some(_)=self.pop_back(){
+        while let Some(c)=self.pop_back(){
 
         }
     }
@@ -210,6 +210,17 @@ impl<T> LinkedList<T> where T:Default{
             Some(unsafe{& mut(*p).value})
         }else{
             None
+        }
+    }
+}
+impl<T> Drop for LinkedList<T>where T:Default{
+    fn drop(&mut self) {
+        self.clear();
+        unsafe{
+             ptr::drop_in_place(self.head);
+             ptr::drop_in_place(self.tail);
+             dealloc(self.head as *mut u8, Layout::new::<Node<T>>());
+             dealloc(self.tail as *mut u8, Layout::new::<Node<T>>());
         }
     }
 }

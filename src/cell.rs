@@ -14,6 +14,7 @@ impl<T> Cell<T> {
              if ptr.is_null(){
                   handle_alloc_error(layout);
              }
+             ptr::write(ptr,val);
              Self{
                  ptr,
                  _marker: PhantomData,
